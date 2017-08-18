@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Checkout</title>
+</head>
+<body>
+    <h1>Thank you for your business!</h1>
+    <p> We charged your credit card ${{ request.session.current_charge }}</p>
+    <p>You have ordered {{ request.session.total_items }} items so far and spent ${{ request.session.total_charges }} with Amadon.com!</p>
+    <br>
+    <form action='/' method='get'>
+        <input type='submit' value='Go Back'>
+    </form>
+</body>
+</html>

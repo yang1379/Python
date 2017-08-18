@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Amadon</title>
+        <meta name="description" content="Amadon">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'amadon/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        {% load static %}
+        <script type="text/javascript" src="{% static 'amadon/js/index.js' %}"></script>
+    </head>
+    <body>
+        <h1>Amadon Store!</h1>
+            
+            <table style="width:100%">
+                <thead>
+					  <tr>
+					    <th>Item</th>
+					    <th>Price</th> 
+					    <th>Actions</th>
+					    
+					    <!--
+					    <th align="left" bgcolor="#cc66ff">Item</th>
+		                <th align="left" bgcolor="#cc66ff">Price</th> 
+		                <th align="left" bgcolor="#cc66ff">Actions</th>
+		                 -->
+					  </tr>
+			     </thead>
+			     <tbody>
+			         {% for item in items %}
+			         <tr>
+			             <td>{{ item.name }}</td>
+			             <td>{{ item.price}}</td>
+			             <td>
+			                 <form action="/buy/{{ item.id }}" method="POST">
+			                 {% csrf_token %}
+			                 <select name="quantity">
+			                     <option>1</option>
+			                     <option>2</option>
+			                     <option>3</option>
+			                 </select>             
+			                 <button type="submit">Buy</button>
+			                 </form>
+			             </td>
+			         </tr>
+			         {% endfor %}
+			     </tbody>
+
+			</table>
+
+    </body>
+</html>
